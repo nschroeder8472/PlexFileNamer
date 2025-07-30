@@ -1,0 +1,21 @@
+(() => {
+  const table = document.querySelector('table.table.table-bordered');
+  if (!table) {
+    console.warn("No table with class 'table table-bordered' found.");
+    return;
+  }
+
+  const rows = table.querySelectorAll('tr');
+  const columnPairs = [];
+
+  rows.forEach((row) => {
+    const cells = row.querySelectorAll('th, td');
+    if (cells.length >= 2) {
+      const first = cells[0].innerText.toLowerCase().trim();
+      const second = cells[1].innerText.trim();
+      columnPairs.push(`${first}~${second}`);
+    }
+  });
+
+  console.log(columnPairs);
+})();

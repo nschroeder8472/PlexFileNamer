@@ -1,8 +1,8 @@
 import os
 
-show_name = "Show Name"
-directory_path = "Path to video Files"
-episode_names_path = "Path to Show Episode Name text file"
+show_name = "Suits"
+directory_path = "E:\\Suits\\Season 02"
+episode_names_path = "F:\\Users\\Nik\\Desktop\\SuitsS02.txt"
 
 def replace_illegal_char(s:str):
     illegal_chars = ['<', '>',':', '\'', '/', '\\', '|', '?', '*', '\n']
@@ -20,7 +20,7 @@ try:
             for video_file in contents:
                 if os.path.isdir(os.path.join(directory_path, video_file)):
                     continue
-                if video_file.lstrip().startswith(episode_num):
+                if episode_num.replace("s","").replace("e","") in video_file.replace("s","").replace("e",""):
                     ext = os.path.splitext(video_file)[1]
                     full_vid_path = os.path.join(directory_path, video_file)
                     new_vid_name = os.path.join(directory_path, f"{show_name} - {episode_num} - {episode_name}{ext}")
